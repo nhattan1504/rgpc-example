@@ -1,0 +1,33 @@
+syntax="proto3";
+service ItemService{
+    rpc deleteItem(ItemId) returns (Items){}
+    rpc createItem (CreateItem) returns (Items){}
+    rpc updateItem (UpdateItem) returns (Item){}
+    rpc getItem(ItemId) returns (Item){}
+    rpc getItems (Empty) returns (Items){};
+}
+message Empty{}
+
+message CreateItem{
+    int32 quantity=2;
+    int64 much=3;
+}
+message UpdateItem{
+    string id=1;
+    int32 quantity=2;
+    int64 much=3;
+}
+message Item{
+    string id=1;
+    int32 quantity=2;
+    int64 much=3;
+}
+
+message Items{
+    repeated Item items=1;
+}
+
+
+message ItemId{
+    string id=1;
+}
